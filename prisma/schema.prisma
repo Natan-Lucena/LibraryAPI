@@ -23,7 +23,7 @@ model Book {
   id String @id @default(uuid())
   title String @unique
   author String
-  available Boolean
+  available Boolean @default(true)
   @@map("books")
   rentalHistory RentalHistory[]
 }
