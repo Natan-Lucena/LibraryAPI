@@ -12,7 +12,7 @@ export class SignInService {
     private jwt: JwtService,
     private config: ConfigService,
   ) {}
-  async execute({ email, password }: AuthDTO) {
+  async execute({ email, password }: AuthDTO): Promise<{ token: string }> {
     const user = await this.prisma.user.findUnique({ where: { email } });
     if (!user) {
       throw new ForbiddenException('Credentials incorrect');

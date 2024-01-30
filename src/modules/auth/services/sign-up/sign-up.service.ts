@@ -2,11 +2,12 @@ import { ForbiddenException, Injectable } from '@nestjs/common';
 import { PrismaService } from '../../../prisma/services/prisma/prisma.service';
 import { CreateUserDTO } from '../../dtos';
 import * as argon from 'argon2';
+import { User } from '@prisma/client';
 
 @Injectable()
 export class SignUpService {
   constructor(private prisma: PrismaService) {}
-  async execute({ name, email, password }: CreateUserDTO) {
+  async execute({ name, email, password }: CreateUserDTO): Promise<User> {
     const hash = await argon.hash(password);
     try {
       const user = await this.prisma.user.create({
