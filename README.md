@@ -70,7 +70,7 @@ $ /book/get -> GET
 $ /book/find/:BookTitle -> GET
 
 # RentalRoutes
-$ /rental/create/bookId -> POST
+$ /rental/create/:bookId -> POST
 $ /rental/getRentals -> GET
 $ /rental/return/:bookId -> PUT
 
